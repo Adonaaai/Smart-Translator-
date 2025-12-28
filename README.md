@@ -6,7 +6,7 @@ Standard translation tools often produce robotic, literal outputs that lack cont
 This approach allows the application to understand nuance and deliver natural, context-aware translations.
 
 ## Technical Overview
-This application communicates with  the OpenRouter using an HTTP 'POST' request. this sends a data package with some information to the server to be processed
+This application communicates with  the OpenRouter API using an HTTP 'POST' request. this sends a data package with some information to the server to be processed.
 
 ## Features
 - **High accuracy:** Leverages Large Language Models via OpenRouter.
