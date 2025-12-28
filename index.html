@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DeepSeek Smart Translator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="main-container fade-in">
+    
+    <div class="header">
+      <h1>SMART TRANSLATOR</h1>
+    </div>
+
+    <div class="language-controls">
+      <div class="control-group">
+        <label for="source-lang">From:</label>
+        <select id="source-lang">
+
+          <option value="English" selected>English</option>
+          <option value="Mandarin Chinese">Mandarin Chinese</option>
+          <option value="Hindi">Hindi</option>
+          <option value="Spanish">Spanish</option>
+          <option value="French">French</option>
+          <option value="Portuguese">Portuguese</option>
+
+          <option value="German">German</option>
+          <option value="Italian">Italian</option>
+          <option value="Dutch">Dutch</option>
+          <option value="Polish">Polish</option>
+          <option value="Swedish">Swedish</option>
+
+          <option value="Japanese">Japanese</option>
+          <option value="Korean">Korean</option>
+          <option value="Vietnamese">Vietnamese</option>
+          <option value="Thai">Thai</option>
+
+          <option value="Turkish">Turkish</option>
+          <option value="Greek">Greek</option>
+          <option value="Hebrew">Hebrew</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="target-lang">To:</label>
+        <select id="target-lang">
+
+          <option value="English">English</option>
+          <option value="Mandarin Chinese">Mandarin Chinese</option>
+          <option value="Hindi">Hindi</option>
+          <option value="Spanish" selected>Spanish</option>
+          <option value="French">French</option>
+          <option value="Portuguese">Portuguese</option>
+
+          <option value="German">German</option>
+          <option value="Italian">Italian</option>
+          <option value="Dutch">Dutch</option>
+          <option value="Polish">Polish</option>
+          <option value="Swedish">Swedish</option>
+
+          <option value="Japanese">Japanese</option>
+          <option value="Korean">Korean</option>
+          <option value="Vietnamese">Vietnamese</option>
+          <option value="Thai">Thai</option>
+
+          <option value="Turkish">Turkish</option>
+          <option value="Greek">Greek</option>
+          <option value="Hebrew">Hebrew</option>
+
+        </select>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <label for="text-input">Original Text</label>
+      <textarea id="text-input" rows="4" placeholder="Type or paste your text here..."></textarea>
+    </div>
+
+    <button id="translate-btn" class="btn-primary">
+      <span id="spinner" class="hidden"></span>
+      <span id="button-text">Translate</span>
+    </button>
+
+    <div id="result-container" class="hidden result-area">
+      <label>Translation:</label>
+      <div id="text-output" class="output-box"></div>
+    </div>
+    
+    <div id="error-container" class="hidden error-box">
+      <h3>Oops! An error occurred:</h3>
+      <p id="error-message"></p>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
