@@ -19,9 +19,15 @@ This application communicates with  the OpenRouter using an HTTP 'POST' request.
 1. **Open the App:** Navigate to the live [Smart Translator](https://adonaaai.github.io/Smart-Translator-/) website.
 2. **Get API Key:** Log in to your account and generate a key at [OpenRouter Keys](https://openrouter.ai/settings/keys).
 3. **Start Translating:** Paste your key into the "API Key" field on the website and you are ready to go!
+
+## preview
+![App Screenshot](previewImage.png)
    
 ## Acknowledgments
 - **CSS Styling:** Refined with the assistance of Google Gemini.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Tech Stack
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
