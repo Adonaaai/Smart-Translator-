@@ -1,78 +1,103 @@
-// Global variables
+// Global DOM elements
 const translateBtn = document.getElementById("translate-btn");
 const spinner = document.getElementById("spinner");
 const resultContainer = document.getElementById("result-container");
 const textOutput = document.getElementById("text-output");
 const errorMessage = document.getElementById("error-message");
 const errorContainer = document.getElementById("error-container");
-const apiURL = new URL("https://openrouter.ai/api/v1/chat/completions");
-const apiKey = ""; // Enter your OpenRouter API key here!!!
 const buttonText = document.getElementById("button-text");
 
-// Async function for translation
-async function translateText() {
-    // Disable button during translation
-    translateBtn.disabled = true;
-    buttonText.textContent = "Translating...";
-    
-    // Loading spinner
-    spinner.classList.remove("hidden");
-    spinner.classList.add("loader");
+// API Configuration
+const apiURL = "https://openrouter.ai/api/v1/chat/completions";
 
-    // Get input values
+async function translateText() {
+    // 1. Get User Settings
+    const apiKey = document.getElementById("api-key-input").value.trim();
+    // Default to free Gemini if empty
+    let model = document.getElementById("model-input").value.trim();
+    if (!model) model = "google/gemini-2.0-flash-exp:free";
+
+    // 2. Validation
+    if (!apiKey) {
+        alert("Please enter your OpenRouter API Key! 🔑");
+        return;
+    }
+
     const sourceLang = document.getElementById("source-lang").value;
     const targetLang = document.getElementById("target-lang").value;
     const inputText = document.getElementById("text-input").value;
-    
-    // Template literals (backticks) are kept for dynamic variables
-    const prompt = `Translate the following content from ${sourceLang} to ${targetLang}:\n\n"${inputText}"`;
 
-    // Request configuration
+    if (!inputText) {
+        alert("Please enter some text to translate.");
+        return;
+    }
+
+    // 3. UI Updates (Start Loading)
+    translateBtn.disabled = true;
+    buttonText.textContent = "Translating...";
+    spinner.classList.remove("hidden");
+    spinner.classList.add("loader");
+    errorContainer.classList.add("hidden"); // Hide previous errors
+    resultContainer.classList.add("hidden"); // Hide previous results
+
+    // 4. Prepare the Prompt
+    const prompt = `Translate the following text from ${sourceLang} to ${targetLang}. Return ONLY the translated text, do not add any quotes or explanations:\n\n"${inputText}"`;
+
     const requestOptions = {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": apiKey
+            "Authorization": `Bearer ${apiKey}`,
+            "HTTP-Referer": window.location.href, // For OpenRouter rankings
+            "X-Title": "Smart Translator"
         },
         body: JSON.stringify({
-            model: "", // AI model for translation
+            model: model,
             messages: [
-                // System (AI) and User relationship
-                {role: "system", content: "You are a translation engine. You simply translate the input text. Do not add any conversational text, explanations, notes, or punctuation that is not part of the translation. Return ONLY the translated string."},
-                {role: "user", content: prompt}
+                {
+                    role: "system", 
+                    content: "You are a professional translator. Output only the translated text."
+                },
+                {
+                    role: "user", 
+                    content: prompt
+                }
             ]
         })
     };
 
-    // Clear previous error messages
-    errorMessage.textContent = "";  
-    
     try {
-        // Call OpenRouter API
         const response = await fetch(apiURL, requestOptions);
+        
+        // Handle API Errors (like 401 Unauthorized)
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error?.message || `API Error: ${response.status}`);
+        }
+
         const data = await response.json();
 
-        if (data.error) {
-            throw new Error(data.error.message);
+        // 5. Display Result
+        if (data.choices && data.choices[0]) {
+             textOutput.textContent = data.choices[0].message.content;
+             resultContainer.classList.remove("hidden");
+        } else {
+             throw new Error("No translation returned from API.");
         }
-        // Display translation result
-        textOutput.textContent = data.choices[0].message.content; // Translation content
-        resultContainer.classList.remove("hidden");
 
     } catch (err) {
-        // Display error message
-        errorMessage.textContent = "Something went wrong ❌. Please try again later.";
+        // Handle Network or Logic Errors
+        errorMessage.textContent = `Error: ${err.message}`;
+        errorContainer.classList.remove("hidden");
         console.error("Translation error:", err);
-
     } finally {
-        // Hide spinner
+        // 6. Reset UI (Stop Loading)
         spinner.classList.remove("loader");
         spinner.classList.add("hidden");
-        
-        // Re-enable button after translation
         translateBtn.disabled = false;
         buttonText.textContent = "Translate";
     }
 }
 
+// Event Listener
 translateBtn.addEventListener("click", translateText);
