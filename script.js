@@ -15,7 +15,7 @@ async function translateText() {
     const apiKey = document.getElementById("api-key-input").value.trim();
     // Default to free Gemini if empty
     let model = document.getElementById("model-input").value.trim();
-    if (!model) model = "google/gemini-2.0-flash-exp:free";
+    if (!model) model = "arcee-ai/trinity-mini:free";
 
     // 2. Validation
     if (!apiKey) {
@@ -101,3 +101,4 @@ async function translateText() {
 
 // Event Listener
 translateBtn.addEventListener("click", translateText);
+
