@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DeepSeek Smart Translator</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -12,63 +13,45 @@
     
     <div class="header">
       <h1>SMART TRANSLATOR</h1>
+      <p class="subtitle">Powered by OpenRouter API</p>
+    </div>
+
+    <div class="settings-group">
+      <input type="password" id="api-key-input" class="input-setting" placeholder="Paste your OpenRouter API Key here">
+      <input type="text" id="model-input" class="input-setting" value="google/gemini-2.0-flash-exp:free" placeholder="Model ID (e.g. deepseek/deepseek-chat)">
     </div>
 
     <div class="language-controls">
       <div class="control-group">
         <label for="source-lang">From:</label>
         <select id="source-lang">
-
           <option value="English" selected>English</option>
           <option value="Mandarin Chinese">Mandarin Chinese</option>
           <option value="Hindi">Hindi</option>
           <option value="Spanish">Spanish</option>
           <option value="French">French</option>
           <option value="Portuguese">Portuguese</option>
-
           <option value="German">German</option>
           <option value="Italian">Italian</option>
-          <option value="Dutch">Dutch</option>
-          <option value="Polish">Polish</option>
-          <option value="Swedish">Swedish</option>
-
           <option value="Japanese">Japanese</option>
           <option value="Korean">Korean</option>
-          <option value="Vietnamese">Vietnamese</option>
-          <option value="Thai">Thai</option>
-
-          <option value="Turkish">Turkish</option>
-          <option value="Greek">Greek</option>
-          <option value="Hebrew">Hebrew</option>
+          <option value="Russian">Russian</option>
         </select>
       </div>
 
       <div class="control-group">
         <label for="target-lang">To:</label>
         <select id="target-lang">
-
           <option value="English">English</option>
           <option value="Mandarin Chinese">Mandarin Chinese</option>
-          <option value="Hindi">Hindi</option>
           <option value="Spanish" selected>Spanish</option>
           <option value="French">French</option>
           <option value="Portuguese">Portuguese</option>
-
           <option value="German">German</option>
           <option value="Italian">Italian</option>
-          <option value="Dutch">Dutch</option>
-          <option value="Polish">Polish</option>
-          <option value="Swedish">Swedish</option>
-
           <option value="Japanese">Japanese</option>
           <option value="Korean">Korean</option>
-          <option value="Vietnamese">Vietnamese</option>
-          <option value="Thai">Thai</option>
-
-          <option value="Turkish">Turkish</option>
-          <option value="Greek">Greek</option>
-          <option value="Hebrew">Hebrew</option>
-
+          <option value="Russian">Russian</option>
         </select>
       </div>
     </div>
