@@ -21,7 +21,7 @@ This application communicates with  the OpenRouter using an HTTP 'POST' request.
 3. **Start Translating:** Paste your key into the "API Key" field on the website and you are ready to go!
 
 ## preview
-![App Screenshot](previewImage.png)
+![App Screenshot](previewImage)
    
 ## Acknowledgments
 - **CSS Styling:** Refined with the assistance of Google Gemini.
