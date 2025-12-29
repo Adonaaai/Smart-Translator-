@@ -13,7 +13,7 @@ const apiURL = "https://openrouter.ai/api/v1/chat/completions";
 async function translateText() {
     // 1. Get User Settings
     const apiKey = document.getElementById("api-key-input").value.trim();
-    // Default to free Gemini if empty
+    // Default to free model if empty
     let model = document.getElementById("model-input").value.trim();
     if (!model) model = "arcee-ai/trinity-mini:free";
 
@@ -101,4 +101,5 @@ async function translateText() {
 
 // Event Listener
 translateBtn.addEventListener("click", translateText);
+
 
