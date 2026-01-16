@@ -6,14 +6,12 @@ Standard translation tools often produce robotic, literal outputs that lack cont
 This approach allows the application to understand nuance and deliver natural, context-aware translations.
 
 ## Technical Overview
-This application communicates with  the OpenRouter API using an HTTP 'POST' request. this sends a data package with some information to the server to be processed.
+This application that only use vanilla javascript, communicates with  the OpenRouter API using an HTTP 'POST' request. this sends a data package with some information to the server to be processed, then the API send back the response(translation).
 
 ## Features
 - **High accuracy:** Leverages Large Language Models via OpenRouter.
 - **Broad language Support:** Includes German, Japanese, Korean, and more.
-- **Responsive Design:** Fully styled with custom CSS.
 - **User FeedBack:** Interactive loading spinners and error alerts.
-
 
 ## How to Use
 1. **Open the App:** Navigate to the live [Smart Translator](https://adonaaai.github.io/Smart-Translator-/) website.
